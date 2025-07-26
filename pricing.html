@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NoneCloud – Pricing</title>
+  <meta name="description" content="Explore our flexible and powerful game server hosting plans. From small communities to large-scale enterprises, NoneCloud has a perfect plan for you.">
+  <meta name="keywords" content="pricing, game hosting plans, server hosting cost, nonecloud.top">
+  <meta property="og:url" content="https://nonecloud.top/pricing.html">
+  <meta property="og:title" content="Hosting Plans & Pricing - NoneCloud">
+  <meta property="og:description" content="Scalable performance for every community size. Find your perfect fit with NoneCloud.">
+  <meta name="google-adsense-account" content="ca-pub-5565426657565556">
+
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="NoneCloud" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5565426657565556"
+     crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --nc-purple: #8A2BE2;
+      --nc-cyan: #00D1FF;
+      --nc-dark-bg: #0D0E14;
+      --nc-surface: #1A1B24;
+      
+      --background-color: var(--nc-dark-bg);
+      --default-color: #E0E0E0;
+      --heading-color: #ffffff;
+      --accent-color: var(--nc-purple);
+      --surface-color: var(--nc-surface);
+
+      --nav-color: #f8f8f8;
+      --nav-hover-color: var(--nc-cyan);
+      --nav-mobile-background-color: var(--nc-surface);
+      --nav-dropdown-background-color: var(--nc-surface);
+      --nav-dropdown-color: #f8f8f8;
+      --nav-dropdown-hover-color: var(--nc-cyan);
+    }
+
+    .light-background {
+      --background-color: #1b1a1a;
+      --surface-color: #282828;
+    }
+    
+    .header .logo img { max-height: 80px; transition: 0.3s; }
+    .footer .footer-about .logo img { max-height: 95px; transition: 0.3s; }
+
+    .btn-getstarted, .btn-primary, .btn-plan {
+      background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan));
+      border: none;
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+    .btn-getstarted:hover, .btn-primary:hover, .btn-plan:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px color-mix(in srgb, var(--nc-cyan), transparent 70%);
+      background: linear-gradient(135deg, #9b48ff, #33e1ff);
+    }
+    
+    .pricing .pricing-card.popular {
+        border: 2px solid var(--nc-purple);
+    }
+
+    .page-hero {
+      padding: 140px 0 60px 0;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--nc-surface), transparent 50%), var(--nc-dark-bg));
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 48px; font-weight: 700; color: var(--heading-color); }
+    .page-hero p { font-size: 18px; color: color-mix(in srgb, var(--default-color), transparent 30%); max-width: 600px; margin: 10px auto 0 auto; }
+
+    /* === BAHAGIAN BARU: Gaya Penukar Mata Wang === */
+    .currency-switcher {
+      text-align: center;
+      padding: 30px 0;
+    }
+    .currency-switcher .switcher-container {
+      display: inline-flex;
+      background-color: var(--surface-color);
+      border-radius: 50px; /* Bentuk pil yang moden */
+      padding: 8px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(138, 43, 226, 0.2);
+    }
+    .currency-switcher .switcher-btn {
+      color: var(--default-color);
+      text-decoration: none;
+      padding: 10px 25px;
+      font-weight: 500;
+      font-size: 16px;
+      border-radius: 50px;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* Transisi efek yang licin */
+      border: none;
+      background-color: transparent;
+    }
+    .currency-switcher .switcher-btn:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05); /* Efek hover membesar */
+    }
+    .currency-switcher .switcher-btn.active {
+      background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan));
+      color: #ffffff;
+      box-shadow: 0 4px 15px color-mix(in srgb, var(--nc-cyan), transparent 80%);
+      transform: scale(1.05);
+    }
+    /* === TAMAT BAHAGIAN BARU === */
+
+    .comparison-table {
+        background-color: var(--surface-color);
+        padding: 40px;
+        border-radius: 15px;
+    }
+    .comparison-table th, .comparison-table td {
+        text-align: center;
+        vertical-align: middle;
+        white-space: nowrap;
+    }
+    .comparison-table .feature-name {
+        text-align: left;
+        font-weight: 600;
+    }
+    .comparison-table thead th {
+        font-size: 1.1rem;
+        padding-bottom: 20px;
+    }
+    .comparison-table .bi-check-circle-fill {
+        color: var(--nc-cyan);
+    }
+    .comparison-table .bi-x-circle-fill {
+        color: color-mix(in srgb, var(--default-color), transparent 60%);
+    }
+
+    .header .dropdown .dropdown-menu {
+        background-color: var(--nc-surface);
+        border: 1px solid color-mix(in srgb, var(--nc-purple), transparent 80%);
+    }
+    .header .dropdown .dropdown-item {
+        color: var(--default-color);
+        padding: 10px 20px;
+    }
+    .header .dropdown .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--nc-purple), var(--nc-cyan));
+        color: #ffffff;
+    }
+    .header .dropdown .dropdown-item:hover small {
+        color: color-mix(in srgb, #ffffff, transparent 30%);
+    }
+    .header .dropdown .dropdown-item span {
+        font-weight: 600;
+    }
+    .header .dropdown .dropdown-item small {
+        display: block;
+        font-size: 0.8em;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+    }
+
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #0D0E14;
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.loader-container .loader-logo {
+    width: 100px;
+    animation: pulse 2s ease-in-out infinite;
+}
+.loader-container .loader-ring {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-top-color: #8A2BE2;
+    border-left-color: #8A2BE2;
+    animation: spin 2s linear infinite;
+}
+.loader-container .loader-ring::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-bottom-color: #00D1FF;
+    border-right-color: #00D1FF;
+    animation: spin 3s linear infinite reverse;
+}
+#preloader .loader-text {
+    margin-top: 30px;
+    color: #E0E0E0;
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+@keyframes pulse {
+    0% { transform: scale(0.95); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(0.95); }
+}
+  </style>
+</head>
+
+<div id="preloader">
+    <div class="loader-container">
+        <div class="loader-ring"></div>
+        <img src="favicon/favicon.svg" alt="NoneCloud Loading" class="loader-logo">
+    </div>
+</div>
+
+<script>
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.ondragstart = function () { return false; };
+    document.onselectstart = function () { return false; };
+    document.onkeydown = function (e) {
+      if (e.keyCode === 123) return false;
+      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) return false;
+      if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 80)) return false;
+      if (e.ctrlKey && e.keyCode === 70) return false;
+    };
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 500);
+            setTimeout(() => {
+                preloader.remove();
+            }, 1300);
+        });
+    }
+</script>
+
+<body class="pricing-page">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html#hero">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#services">Game Servers</a></li>
+          <li><a href="pricing.html" class="active">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="dropdown">
+        <a class="btn-getstarted dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Client Area
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#"><span>Client Area</span><small>Billing & Support</small></a></li>
+          <li><a class="dropdown-item" href="#"><span>Game Panel</span><small>Server Management</small></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    
+    <section class="page-hero section">
+        <div class="container">
+            <h1 data-aos="fade-up">Our Hosting Plans</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Scalable performance for every community size. Find your perfect fit with our transparent, no-hidden-fees pricing.</p>
+        </div>
+    </section>
+    
+    <div class="currency-switcher" data-aos="fade-up" data-aos-delay="200">
+        <div class="switcher-container">
+            <a href="pricing.html" class="switcher-btn active">MYR</a>
+            <a href="pricing-usd.html" class="switcher-btn">USD</a>
+            <a href="pricing-idr.html" class="switcher-btn">IDR</a>
+        </div>
+    </div>
+    <section id="pricing" class="pricing section" style="padding-top: 20px;">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="row gy-4 justify-content-center">
+          
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Iron</h3><p>Great for starting your journey</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">4.50</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 2 vCPU Cores</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 4 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 40 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Bronze</h3><p>A solid choice for popular modpacks</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">8.00</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 3 vCPU Cores</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 6 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 40 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="pricing-card popular">
+              <div class="popular-tag">Most Popular</div>
+              <div class="plan-header"><h3>Silver</h3><p>The sweet spot for most communities</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">15.80</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 3 vCPU Cores (HF)</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 8 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 50 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+          
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Gold</h3><p>For established & growing servers</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">20.00</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 4 vCPU Cores</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 10 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 60 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4 justify-content-center mt-3">
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Platinum</h3><p>Handles heavy modpacks with ease</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">30.99</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 4 vCPU Cores (HF)</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 12 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 60 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Diamond</h3><p>High performance for large servers</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">38.10</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 6 vCPU Cores</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 16 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 80 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="400">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Emerald</h3><p>Pro-tier for serious communities</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">53.30</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 6 vCPU Cores (HF)</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 20 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 80 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="500">
+            <div class="pricing-card">
+              <div class="plan-header"><h3>Ruby</h3><p>Extreme power for any task</p></div>
+              <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">68.00</span><span class="period">/mo</span></div></div>
+              <div class="plan-features"><ul>
+                  <li><i class="bi bi-check-circle-fill"></i> 8 vCPU Cores</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 24 GB DDR5 RAM</li>
+                  <li><i class="bi bi-check-circle-fill"></i> 100 GB NVMe Storage</li>
+              </ul></div>
+              <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row gy-4 justify-content-center mt-3">
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="200">
+              <div class="pricing-card">
+                <div class="plan-header"><h3>Obsidian</h3><p>Maximum power for the largest worlds</p></div>
+                <div class="plan-pricing"><div class="price"><span class="currency">MYR</span><span class="amount">77.20</span><span class="period">/mo</span></div></div>
+                <div class="plan-features"><ul>
+                    <li><i class="bi bi-check-circle-fill"></i> 8 vCPU Cores (HF)</li>
+                    <li><i class="bi bi-check-circle-fill"></i> 32 GB DDR5 RAM</li>
+                    <li><i class="bi bi-check-circle-fill"></i> 250 GB NVMe Storage</li>
+                </ul></div>
+                <div class="plan-cta"><a href="#" class="btn-plan">Choose Plan</a></div>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6" data-aos="zoom-in" data-aos-delay="300">
+              <div class="pricing-card">
+                <div class="plan-header">
+                  <div class="plan-icon"><i class="bi bi-tools"></i></div>
+                  <h3>Custom Plan</h3>
+                  <p>Need more power? Build your own plan</p>
+                </div>
+                <div class="plan-pricing"><div class="price"><span class="amount" style="font-size: 2rem;">Contact Us</span></div></div>
+                <div class="plan-features"><ul>
+                    <li><i class="bi bi-check-circle-fill"></i> Your Choice of vCPU</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Your Choice of RAM</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Your Choice of Storage</li>
+                    <li><i class="bi bi-check-circle-fill"></i> Priority Support Included</li>
+                </ul></div>
+                <div class="plan-cta"><a href="https://discord.gg/MnRTdaqTu4" target="_blank" class="btn-plan">Request via Discord</a></div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="comparison" class="comparison section light-background">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title">
+                <h2>Compare All Features</h2>
+                <p>A detailed look at what each plan offers. All plans include our powerful Pterodactyl Panel and 24/7 support.</p>
+            </div>
+            <div class="comparison-table table-responsive" data-aos="fade-up" data-aos-delay="100">
+                <table class="table table-dark table-striped table-borderless">
+                    <thead>
+                        <tr>
+                            <th class="feature-name">Feature</th>
+                            <th>Iron (4GB)</th>
+                            <th>Bronze (6GB)</th>
+                            <th>Silver (8GB)</th>
+                            <th>Gold (10GB)</th>
+                            <th>Platinum (12GB)</th>
+                            <th>Diamond (16GB)</th>
+                            <th>Emerald (20GB)</th>
+                            <th>Ruby (24GB)</th>
+                            <th>Obsidian (32GB)</th>
+                            <th>Custom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td class="feature-name">Price (MYR/mo)</td><td>4.50</td><td>8.00</td><td>15.80</td><td>20.00</td><td>30.99</td><td>38.10</td><td>53.30</td><td>68.00</td><td>77.20</td><td>Custom</td></tr>
+                        <tr><td class="feature-name">CPU Cores</td><td>2</td><td>3</td><td>3 (HF)</td><td>4</td><td>4 (HF)</td><td>6</td><td>6 (HF)</td><td>8</td><td>8 (HF)</td><td>Custom</td></tr>
+                        <tr><td class="feature-name">DDR5 RAM</td><td>4 GB</td><td>6 GB</td><td>8 GB</td><td>10 GB</td><td>12 GB</td><td>16 GB</td><td>20 GB</td><td>24 GB</td><td>32 GB</td><td>Custom</td></tr>
+                        <tr><td class="feature-name">NVMe Storage</td><td>40 GB</td><td>40 GB</td><td>50 GB</td><td>60 GB</td><td>60 GB</td><td>80 GB</td><td>80 GB</td><td>90 GB</td><td>100 GB</td><td>Custom</td></tr>
+                        <tr><td class="feature-name">Adv. DDoS Protection</td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td></tr>
+                        <tr><td class="feature-name">Dedicated IP</td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td></tr>
+                        <tr><td class="feature-name">Priority Support</td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td><td><i class="bi bi-check-circle-fill"></i></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="faq section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-title">
+            <h2>Pricing Questions</h2>
+            <p>Answers to common questions about our plans and billing.</p>
+        </div>
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-10">
+            <div class="faq-list">
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>What happens if my server needs more resources?</h3>
+                <div class="faq-content">
+                  <p>You can upgrade your plan at any time through our client area with just a few clicks. The system is fully automated, and you'll only pay the prorated difference for the remainder of your billing cycle.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>Is there a money-back guarantee?</h3>
+                <div class="faq-content">
+                  <p>Yes, we offer a money-back guarantee within 7 days of your initial purchase. To request a refund, please contact our support team via Discord or email with valid proof of transaction. All requests are reviewed within 72 hours. Please note that refunds are not available for policy violations, service misuse, or user-side errors.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>Are there any hidden fees or contracts?</h3>
+                <div class="faq-content">
+                  <p>Absolutely not. The price you see is the price you pay. We believe in transparent pricing. All our plans are billed monthly without any long-term contracts, so you can cancel anytime.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <h3>Which server location should I choose?</h3>
+                <div class="faq-content">
+                  <p>For the lowest ping and best gameplay experience, we recommend choosing the server location geographically closest to you and your players. We currently offer servers in Malaysia, Singapore, and Indonesia.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+      <div class="footer-top">
+          <div class="container">
+              <div class="row gy-4">
+                  <div class="col-lg-4 col-md-6 footer-about">
+                      <a href="index.html" class="logo d-flex align-items-center">
+                          <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+                      </a>
+                      <div class="footer-contact pt-3">
+                          <p>Premium Game Server Hosting</p>
+                          <p>Locations: Malaysia, Singapore, Indonesia</p>
+                          <p class="mt-3"><strong>Email:</strong> <span>support@nonecloud.top</span></p>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Quick Links</h4>
+                      <ul>
+                          <li><a href="index.html#hero">Home</a></li>
+                          <li><a href="index.html#features">Features</a></li>
+                          <li><a href="index.html#services">Game Servers</a></li>
+                          <li><a href="pricing.html">Pricing</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Company</h4>
+                      <ul>
+                          <li><a href="#">About Us</a></li>
+                          <li><a href="legal.html#terms-of-service">Terms of Service</a></li>
+                          <li><a href="legal.html#privacy-policy">Privacy Policy</a></li>
+                          <li><a href="index.html#contact">Contact Us</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-4 col-md-12 footer-social">
+                      <h4>Follow Us</h4>
+                      <p>Join our community and stay up-to-date with the latest news and offers.</p>
+                      <div class="social-links d-flex mt-4">
+                          <a href="https://www.youtube.com/@NoneCloudOfficial"><i class="bi bi-youtube"></i></a>
+                          <a href="https://www.tiktok.com/@nonecloudofficial"><i class="bi bi-tiktok"></i></a>
+                          <a href="https://discord.gg/MnRTdaqTu4" target="_blank"><i class="bi bi-discord"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="copyright text-center">
+          <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+              <div class="d-flex flex-column align-items-center align-items-lg-start">
+                  <div>
+                      © 2024 - <script>document.write(new Date().getFullYear())</script> <strong><span>NoneCloud.top</span></strong>. All Rights Reserved.
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
