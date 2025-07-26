@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NoneCloud – Legal Policies</title>
+  <meta name="description" content="Read the Legal Policies, including Terms of Service, Privacy Policy, Cookie Policy, and more for NoneCloud game server hosting.">
+  <meta name="keywords" content="legal, terms of service, privacy policy, cookie policy, sla, refund policy, nonecloud.top">
+  <meta name="google-adsense-account" content="ca-pub-5565426657565556">
+
+  <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+  <link rel="shortcut icon" href="favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <link href="assets/css/main.css" rel="stylesheet">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5565426657565556"
+     crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --nc-purple: #8A2BE2;
+      --nc-cyan: #00D1FF;
+      --nc-dark-bg: #0D0E14;
+      --nc-surface: #1A1B24;
+      
+      --background-color: var(--nc-dark-bg);
+      --default-color: #E0E0E0;
+      --heading-color: #ffffff;
+      --accent-color: var(--nc-purple);
+      --surface-color: var(--nc-surface);
+
+      --nav-color: #f8f8f8;
+      --nav-hover-color: var(--nc-cyan);
+      --nav-mobile-background-color: var(--nc-surface);
+      --nav-dropdown-background-color: var(--nc-surface);
+      --nav-dropdown-color: #f8f8f8;
+      --nav-dropdown-hover-color: var(--nc-cyan);
+    }
+
+    .light-background {
+      --background-color: #1b1a1a;
+      --surface-color: #282828;
+    }
+    
+    .header .logo img { max-height: 80px; transition: 0.3s; }
+    .footer .footer-about .logo img { max-height: 95px; transition: 0.3s; }
+
+    .btn-getstarted, .btn-primary, .btn-plan {
+      background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan));
+      border: none;
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+    .btn-getstarted:hover, .btn-primary:hover, .btn-plan:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px color-mix(in srgb, var(--nc-cyan), transparent 70%);
+      background: linear-gradient(135deg, #9b48ff, #33e1ff);
+    }
+    
+    .page-hero {
+      padding: 140px 0 80px 0;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--nc-surface), transparent 50%), var(--nc-dark-bg));
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 48px; font-weight: 700; color: var(--heading-color); }
+    .page-hero p { font-size: 18px; color: color-mix(in srgb, var(--default-color), transparent 30%); max-width: 600px; margin: 10px auto 0 auto; }
+
+    /* Legal Page Specific Styles */
+    .legal-nav .nav-link {
+        font-weight: 500;
+        color: var(--default-color);
+        padding: 10px 15px;
+        border-left: 3px solid transparent;
+    }
+    .legal-nav .nav-link:hover {
+        color: var(--nc-cyan);
+        border-left-color: var(--nc-cyan);
+    }
+    .legal-nav .nav-link.active {
+        color: #ffffff;
+        font-weight: 700;
+        background: linear-gradient(90deg, color-mix(in srgb, var(--nc-purple), transparent 80%), transparent);
+        border-left-color: var(--nc-purple);
+    }
+    .policy-section {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    .policy-section:not(:first-child) {
+        border-top: 1px solid var(--surface-color);
+    }
+    .policy-section h2 {
+        color: var(--heading-color);
+        margin-bottom: 5px;
+    }
+    .policy-section .last-updated {
+        font-size: 0.9rem;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+        margin-bottom: 25px;
+        display: block;
+    }
+    .policy-section h3 { 
+        color: var(--nc-cyan); 
+        margin-top: 30px; 
+        margin-bottom: 15px;
+        font-size: 1.2rem;
+        font-weight: 700;
+    }
+    .policy-section p, .policy-section li { color: color-mix(in srgb, var(--default-color), transparent 20%); line-height: 1.8; }
+    
+    /* Custom Dropdown Styling */
+    .header .dropdown .dropdown-menu {
+        background-color: var(--nc-surface);
+        border: 1px solid color-mix(in srgb, var(--nc-purple), transparent 80%);
+    }
+    .header .dropdown .dropdown-item {
+        color: var(--default-color);
+        padding: 10px 20px;
+    }
+    .header .dropdown .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--nc-purple), var(--nc-cyan));
+        color: #ffffff;
+    }
+    .header .dropdown .dropdown-item:hover small {
+        color: color-mix(in srgb, #ffffff, transparent 30%);
+    }
+    .header .dropdown .dropdown-item span {
+        font-weight: 600;
+    }
+    .header .dropdown .dropdown-item small {
+        display: block;
+        font-size: 0.8em;
+        color: color-mix(in srgb, var(--default-color), transparent 40%);
+    }
+/* --- Advanced Preloader Styles --- */
+
+/* Preloader Container */
+#preloader {
+    position: fixed;
+    inset: 0;
+    background: #0D0E14; /* Warna latar belakang gelap */
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+/* Class to hide preloader after loading */
+#preloader.loaded {
+    opacity: 0;
+    visibility: hidden;
+}
+
+/* Container for the animation elements */
+.loader-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Your logo inside the preloader */
+.loader-container .loader-logo {
+    width: 100px; /* Saiz logo 'N' anda */
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* The animated spinning rings */
+.loader-container .loader-ring {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border: 4px solid transparent;
+    border-radius: 50%;
+    border-top-color: #8A2BE2;  /* Warna Ungu */
+    border-left-color: #8A2BE2; /* Warna Ungu */
+    animation: spin 2s linear infinite;
+}
+
+.loader-container .loader-ring::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    bottom: -4px;
+    left: -4px;
+    border-radius: 50%;
+    border: 4px solid transparent;
+    border-bottom-color: #00D1FF; /* Warna Sian */
+    border-right-color: #00D1FF;  /* Warna Sian */
+    animation: spin 3s linear infinite reverse;
+}
+
+/* The text below the loader */
+#preloader .loader-text {
+    margin-top: 30px;
+    color: #E0E0E0; /* Warna teks kelabu lembut */
+    font-family: "Raleway", sans-serif;
+    font-size: 0.9rem;
+}
+
+/* Keyframe Animations */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(0.95);
+    }
+}
+  </style>
+</head>
+
+<div id="preloader">
+    <div class="loader-container">
+        <div class="loader-ring"></div>
+        <img src="favicon/favicon.svg" alt="NoneCloud Loading" class="loader-logo">
+    </div>
+</div>
+<script>
+        // Security: Block right click, select, drag, F12 etc
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.ondragstart = function () { return false; };
+        document.onselectstart = function () { return false; };
+        document.onkeydown = function (e) {
+          if (e.keyCode === 123) return false;
+          if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) return false;
+          if (e.ctrlKey && (
+              e.keyCode === 85 ||
+              e.keyCode === 83 ||
+              e.keyCode === 65 ||
+              e.keyCode === 67 ||
+              e.keyCode === 80
+            )) return false;
+          if (e.ctrlKey && e.keyCode === 70) return false;
+        };
+    const preloader = document.querySelector('#preloader');
+    if (preloader) {
+        window.addEventListener('load', () => {
+            // Optional: minimum display time for the preloader
+            setTimeout(() => {
+                preloader.classList.add('loaded');
+            }, 500); // 500ms = 0.5 saat
+
+            // Remove the preloader element from the DOM after the fade-out transition
+            setTimeout(() => {
+                preloader.remove();
+            }, 1300); // This time should be longer than the transition time in CSS
+        });
+    }
+</script>
+
+<body data-bs-spy="scroll" data-bs-target="#legal-nav-menu">
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#services">Game Servers</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="dropdown">
+        <a class="btn-getstarted dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Client Area
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="#"><span>Client Area</span><small>Billing & Support</small></a></li>
+          <li><a class="dropdown-item" href="#"><span>Game Panel</span><small>Server Management</small></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    
+    <section class="page-hero section">
+        <div class="container">
+            <h1 data-aos="fade-up">Legal Policies</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Our terms, policies, and agreements.</p>
+        </div>
+    </section>
+    
+    <section id="legal" class="legal section">
+      <div class="container" data-aos="fade-up">
+        <div class="row">
+
+            <div class="col-lg-3">
+                <nav id="legal-nav-menu" class="nav legal-nav flex-column" style="position: sticky; top: 100px;">
+                    <a class="nav-link" href="#terms-of-service">Terms of Service</a>
+                    <a class="nav-link" href="#privacy-policy">Privacy Policy</a>
+                    <a class="nav-link" href="#cookie-policy">Cookie Policy</a>
+                    <a class="nav-link" href="#security-guidelines">Security Guidelines</a>
+                    <a class="nav-link" href="#usage-policy">Server Usage & Fair Play</a>
+                    <a class="nav-link" href="#sla">Service Level Agreement</a>
+                    <a class="nav-link" href="#expiration-policy">Expiration Policy</a>
+                    <a class="nav-link" href="#account-deletion-policy">Account Deletion Policy</a>
+                    <a class="nav-link" href="#support-guidelines">Support Guidelines</a>
+                    <a class="nav-link" href="#refund-policy">Refund Policy</a>
+                </nav>
+            </div>
+
+            <div class="col-lg-9">
+                
+                <div id="terms-of-service" class="policy-section">
+                    <h2>Terms of Service</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Service Overview</h3>
+                    <p>NoneCloud provides game hosting services using Pterodactyl Panel. Services are provided "as is" and "as available". We reserve the right to modify or terminate any service at any time without prior notice.</p>
+                    <h3>Acceptable Use</h3>
+                    <p>No illegal or abusive activities including DDoS, phishing, unauthorized sharing, crypto mining, or NSFW content. Violations may result in immediate suspension or termination without refund.</p>
+                    <h3>Account Responsibility</h3>
+                    <p>You are responsible for keeping your account secure. We are not liable for any loss due to unauthorized access. By logging into your account, you reaffirm your acceptance of our current Legal Policies, including these Terms of Service and our Privacy Policy. Any unauthorized access attempts or suspicious activity may result in account suspension or termination.</p>
+                    <h3>Account Registration</h3> <p>By creating an account with NoneCloud, you explicitly agree to these Terms of Service, our Privacy Policy, and all other applicable policies. You represent that all information provided during registration is accurate and complete. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account. You must be at least 13 years old to register for an account.</p>
+                    <h3>Availability</h3>
+                    <p>We maintain a 99.9% uptime commitment, ensuring stable and uninterrupted service. Any scheduled maintenance will be communicated in advance.</p>
+                    <h3>Support</h3>
+                    <p>Support is available through our official Discord ticket system. Opening a ticket without valid reason may result in a 1-day mute.</p>
+                    <h3>Language Use</h3>
+                    <p>All languages are allowed, but using a language to mock or insult others is strictly prohibited.</p>
+                    <h3>Termination</h3>
+                    <p>We may suspend or terminate your account for violating our rules or policies.</p>
+                </div>
+
+                <div id="privacy-policy" class="policy-section">
+                    <h2>Privacy Policy</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Information We Collect</h3>
+                    <p>We collect your email address, IP address, Discord ID (if applicable), server usage and logs.</p>
+                    <h3>Use of Information</h3>
+                    <p>Your information is used to provide, manage, and maintain services, send service updates, and to improve our platform experience. This includes using your registered email address to securely facilitate password reset requests and to send critical account-related communications.</p>
+                    <h3>Sharing</h3>
+                    <p>We do not sell or share your data with third parties. We only disclose data if required by law.</p>
+                    <h3>Data Security</h3>
+                    <p>We implement proper safeguards to protect your information.</p>
+                    <h3>Retention</h3>
+                    <p>We retain data only as long as necessary for service and legal purposes.</p>
+                    <h3>User Rights</h3>
+                    <p>You may request to view or delete your personal data at any time.</p>
+                </div>
+
+                <div id="cookie-policy" class="policy-section">
+                    <h2>Cookie Policy</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Essential Cookies (Pterodactyl Panel)</h3>
+                    <p>We use essential cookies to maintain your login session in the Pterodactyl Panel. These cookies are strictly necessary and cannot be disabled as they are required for basic platform functionality.</p>
+                    <h3>No Optional Cookies</h3>
+                    <p>We do not use any optional, analytics, marketing, or third-party cookies. Only essential cookies required for the Pterodactyl Panel operation are implemented.</p>
+                    <h3>Cookie Management</h3>
+                    <p>While you can use your browser settings to delete cookies, please note that blocking essential cookies will prevent access to the Panel and clearing cookies will require you to log in again.</p>
+                </div>
+
+                <div id="security-guidelines" class="policy-section">
+                    <h2>Account & Server Security Guidelines</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Account Security Best Practices</h3>
+                    <p>Always use strong passwords with a minimum of 12 characters including uppercase, lowercase, numbers and symbols. Enable 2FA whenever possible and never share your login credentials or API keys.</p>
+                    <h3>Password Management & Reset</h3> <p>When resetting your password, it is crucial to create a new, strong, and unique password that adheres to our minimum length requirements (at least 8 characters). You are solely responsible for ensuring the security of your new password and for any activities that occur if your password is compromised. Immediately report any unauthorized password reset attempts or suspicious activity related to your account.</p>
+                    <h3>Requesting Password Resets</h3> <p>If you forget your password, you can request a reset via your registered email address. Ensure that you are on our official website before submitting any information. We will never ask for your password via email. Be wary of phishing attempts and report any suspicious password reset emails that do not originate from NoneCloud.</p>
+                    <h3>Server Management & Backup</h3>
+                    <p>You should monitor your server resources regularly, keep software updated, and create regular backups of important data. It is recommended to store backups in multiple secure locations and test restoration procedures periodically.</p>
+                </div>
+
+                <div id="usage-policy" class="policy-section">
+                    <h2>Server Usage & Fair Play</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Resource Allocation & Fair Use</h3>
+                    <p>Each server package comes with specific resource limits. Attempting to exceed these limits may result in automatic suspension. Users must maintain fair usage of server resources, as excessive CPU usage, memory leaks, or storage abuse will trigger warnings.</p>
+                    <h3>Plugin Guidelines</h3>
+                    <p>Only use optimized and trusted plugins. Malicious or poorly optimized plugins that cause server strain are not allowed.</p>
+                    <h3>Backup Policy</h3>
+                    <p>We provide limited basic backup solutions and do not offer automatic or premium backup services. Users are fully responsible for creating and maintaining their own backups to prevent data loss.</p>
+                </div>
+                
+                <div id="sla" class="policy-section">
+                    <h2>Service Level Agreement (SLA)</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Uptime Guarantee</h3>
+                    <p>We strive to maintain 99.9% uptime for all services. Scheduled maintenance will be announced at least 24 hours in advance.</p>
+                    <h3>Support Response Time</h3>
+                    <p>Support tickets will be handled within 24 hours, but response times may vary. We handle tickets in the order they are received.</p>
+                    <h3>Compensation Policy</h3>
+                    <p>Service credits may be issued for extended downtime exceeding our SLA and must be claimed within 7 days of the incident.</p>
+                </div>
+
+                <div id="expiration-policy" class="policy-section">
+                    <h2>Server Guarantee & Expiration Policy</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>30-Day Guarantee</h3>
+                    <p>Upon purchase, each server is guaranteed active for 30 days. Renewing or extending the server resets this 30-day period.</p>
+                    <h3>Expiration, Suspension, and Deletion</h3>
+                    <p>After 30 days, the server will expire and be suspended for 3 days. If the service is not extended within this suspension period, the server will be permanently deleted.</p>
+                </div>
+
+                <div id="account-deletion-policy" class="policy-section">
+                    <h2>Account Deletion Policy</h2>
+                    <span class="last-updated">Last Updated: 2025-07-17 20:01:38</span>
+                    <h3>Risk & Irreversibility</h3>
+                    <p>By proceeding with account deletion, you acknowledge and accept that you do so at your own risk. Once your account is deleted, all associated data, including but not limited to server configurations, files, user profiles, and billing history, will be permanently removed from our database system. This action is irreversible, and your account and data cannot be recovered.</p>
+                    <h3>Process & Confirmation</h3>
+                    <p>To initiate account deletion, you must follow the specific instructions provided within your client area or by contacting our support team. We will require explicit confirmation of your intent to delete your account to prevent accidental deletions. Please ensure you have backed up any data you wish to retain before proceeding.</p>
+                </div>
+
+                <div id="support-guidelines" class="policy-section">
+                    <h2>Technical Support Guidelines</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Support Channels & Self-Help</h3>
+                    <p>Official support is provided through Discord Support Tickets, Email, and our Knowledge Base. Users are encouraged to check our knowledge base, documentation, and tutorials before opening a ticket.</p>
+                    <h3>Scope of Support</h3>
+                    <p>We provide support for server connectivity, control panel access, resource management, and basic game server configuration. We do not offer support for custom plugin configurations, game-specific gameplay issues, or third-party modifications.</p>
+                </div>
+
+                <div id="refund-policy" class="policy-section">
+                    <h2>Refund Policy</h2>
+                    <span class="last-updated">Last Updated: 2025-07-16 16:55:49</span> <h3>Eligibility & Process</h3>
+                    <p>Refunds are allowed only within 7 days of the initial purchase and require valid proof of transaction (screenshot, receipt, or transaction ID). To request a refund, contact support via Discord or email. We review requests within 72 hours.</p>
+                    <h3>Exclusions</h3>
+                    <p>No refunds will be given for policy violations, service misuse, or user-side errors. Once a refund is processed, the associated service will be terminated immediately.</p>
+                </div>
+
+            </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer" class="footer light-background">
+      <div class="footer-top">
+          <div class="container">
+              <div class="row gy-4">
+                  <div class="col-lg-4 col-md-6 footer-about">
+                      <a href="index.html" class="logo d-flex align-items-center">
+                          <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+                      </a>
+                      <div class="footer-contact pt-3">
+                          <p>Premium Game Server Hosting</p>
+                          <p>Locations: Malaysia, Singapore, Indonesia</p>
+                          <p class="mt-3"><strong>Email:</strong> <span>support@nonecloud.top</span></p>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Quick Links</h4>
+                      <ul>
+                          <li><a href="index.html#hero">Home</a></li>
+                          <li><a href="index.html#features">Features</a></li>
+                          <li><a href="index.html#services">Game Servers</a></li>
+                          <li><a href="pricing.html">Pricing</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Company</h4>
+                      <ul>
+                          <li><a href="#">About Us</a></li>
+                          <li><a href="legal.html#terms-of-service">Terms of Service</a></li>
+                          <li><a href="legal.html#privacy-policy">Privacy Policy</a></li>
+                          <li><a href="index.html#contact">Contact Us</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-4 col-md-12 footer-social">
+                      <h4>Follow Us</h4>
+                      <p>Join our community and stay up-to-date with the latest news and offers.</p>
+                      <div class="social-links d-flex mt-4">
+                          <a href="https://www.youtube.com/@NoneCloudOfficial"><i class="bi bi-youtube"></i></a>
+                          <a href="https://www.tiktok.com/@nonecloudofficial"><i class="bi bi-tiktok"></i></a>
+                          <a href="https://discord.gg/MnRTdaqTu4" target="_blank"><i class="bi bi-discord"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="copyright text-center">
+          <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+              <div class="d-flex flex-column align-items-center align-items-lg-start">
+                  <div>
+                      © 2024 - <script>document.write(new Date().getFullYear())</script> <strong><span>NoneCloud.top</span></strong>. All Rights Reserved.
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
