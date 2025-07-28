@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>NoneCloud – About Us</title>
+  <meta name="description" content="Learn about NoneCloud, a premium provider of high-performance game server hosting powered by the Pterodactyl Panel, founded by Muhammad Wafiq.">
+  <meta name="keywords" content="about us, game hosting, pterodactyl panel, high performance servers, nonecloud">
+  <meta property="og:url" content="https://nonecloud.top/about.html">
+  <meta property="og:title" content="About NoneCloud - High-Performance Game Hosting">
+  <meta property="og:description" content="Discover our mission to provide reliable, low-latency game server infrastructure for gamers worldwide.">
+  <meta name="google-adsense-account" content="ca-pub-5565426657565556">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://resources.nonecloud.top/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://resources.nonecloud.top/favicon.svg" />
+  <link rel="shortcut icon" href="https://resources.nonecloud.top/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://resources.nonecloud.top/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="NoneCloud" />
+  <link rel="manifest" href="favicon/site.webmanifest" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="assets/css/main.css" rel="stylesheet">
+  
+  <!-- Adsense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5565426657565556"
+     crossorigin="anonymous"></script>
+     
+  <style>
+    :root {
+      --nc-purple: #8A2BE2;
+      --nc-cyan: #00D1FF;
+      --nc-dark-bg: #0D0E14;
+      --nc-surface: #1A1B24;
+      
+      --background-color: var(--nc-dark-bg);
+      --default-color: #E0E0E0;
+      --heading-color: #ffffff;
+      --accent-color: var(--nc-purple);
+      --surface-color: var(--nc-surface);
+
+      --nav-color: #f8f8f8;
+      --nav-hover-color: var(--nc-cyan);
+      --nav-mobile-background-color: var(--nc-surface);
+      --nav-dropdown-background-color: var(--nc-surface);
+      --nav-dropdown-color: #f8f8f8;
+      --nav-dropdown-hover-color: var(--nc-cyan);
+    }
+
+    .light-background { 
+      --background-color: #1b1a1a; 
+      --surface-color: #282828; 
+    }
+    
+    .header .logo img { max-height: 85px; transition: 0.3s; }
+    .footer .footer-about .logo img { max-height: 105px; transition: 0.3s; }
+
+    .btn-getstarted, .btn-primary, .btn-plan, .btn-get-started {
+      background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan));
+      border: none;
+      color: #ffffff !important;
+      text-decoration: none;
+    }
+    .btn-getstarted:hover, .btn-primary:hover, .btn-plan:hover, .btn-get-started:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px color-mix(in srgb, var(--nc-cyan), transparent 70%);
+      background: linear-gradient(135deg, #9b48ff, #33e1ff);
+    }
+    
+    .page-hero {
+      padding: 140px 0 80px 0;
+      background: linear-gradient(180deg, color-mix(in srgb, var(--surface-color), transparent 50%), var(--background-color));
+      text-align: center;
+    }
+    .page-hero h1 { font-size: 48px; font-weight: 700; color: var(--heading-color); }
+    .page-hero p { font-size: 18px; color: color-mix(in srgb, var(--default-color), transparent 30%); max-width: 700px; margin: 10px auto 0 auto; }
+    
+    .about .content h3 {
+        font-weight: 700;
+        font-size: 34px;
+        margin-bottom: 20px;
+        color: var(--heading-color);
+        position: relative;
+        padding-bottom: 15px;
+    }
+    .about .content h3::after {
+        content: '';
+        position: absolute;
+        display: block;
+        width: 60px;
+        height: 3px;
+        background: var(--accent-color);
+        left: 0;
+        bottom: 0;
+    }
+    .about .content .fst-italic {
+        color: color-mix(in srgb, var(--default-color), transparent 20%);
+        margin-bottom: 1rem;
+        display: block;
+    }
+    .about .image-wrapper {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+    }
+    
+    .feature-box {
+        padding: 30px;
+        background-color: var(--surface-color);
+        border-radius: 15px;
+        text-align: left;
+        height: 100%;
+        border: 1px solid color-mix(in srgb, var(--accent-color), transparent 85%);
+        transition: all 0.3s ease-in-out;
+    }
+    .feature-box:hover {
+        transform: translateY(-10px);
+        border-color: var(--accent-color);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+    .feature-box i {
+        font-size: 36px;
+        color: var(--accent-color);
+        margin-bottom: 20px;
+        display: block;
+    }
+    .feature-box h4 {
+        font-size: 20px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+
+    .faq .faq-item {
+        background-color: var(--surface-color);
+        border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+    .faq .faq-item:hover {
+        border-color: var(--accent-color);
+        transform: translateY(-5px);
+    }
+    .faq .faq-item h3 {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 0;
+        padding-right: 30px; /* Space for the icon */
+    }
+    .faq .faq-item.faq-active h3 {
+        color: var(--accent-color);
+    }
+    .faq .faq-content {
+        padding-top: 15px;
+    }
+    
+    #preloader {
+        position: fixed;
+        inset: 0;
+        background: var(--nc-dark-bg);
+        z-index: 99999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    #preloader.loaded {
+        opacity: 0;
+        visibility: hidden;
+    }
+    .loader-container {
+        position: relative;
+        width: 150px;
+        height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .loader-container .loader-logo {
+        width: 100px;
+        animation: pulse 2s ease-in-out infinite;
+    }
+    .loader-container .loader-ring {
+        position: absolute;
+        width: 150px;
+        height: 150px;
+        border: 4px solid transparent;
+        border-radius: 50%;
+        border-top-color: var(--nc-purple);
+        border-left-color: var(--nc-purple);
+        animation: spin 2s linear infinite;
+    }
+    .loader-container .loader-ring::before {
+        content: '';
+        position: absolute;
+        top: -4px;
+        right: -4px;
+        bottom: -4px;
+        left: -4px;
+        border-radius: 50%;
+        border: 4px solid transparent;
+        border-bottom-color: var(--nc-cyan);
+        border-right-color: var(--nc-cyan);
+        animation: spin 3s linear infinite reverse;
+    }
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+    @keyframes pulse {
+        0% { transform: scale(0.95); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(0.95); }
+    }
+  </style>
+</head>
+
+<body class="about-page">
+
+  <!-- ======= Preloader ======= -->
+  <div id="preloader">
+      <div class="loader-container">
+          <div class="loader-ring"></div>
+          <img src="https://resources.nonecloud.top/favicon.svg" alt="NoneCloud Loading" class="loader-logo">
+      </div>
+  </div>
+
+  <!-- ======= Anti-Copy Script ======= -->
+  <script>
+      document.addEventListener('contextmenu', e => e.preventDefault());
+      document.ondragstart = function () { return false; };
+      document.onselectstart = function () { return false; };
+      document.onkeydown = function (e) {
+        if (e.keyCode === 123) return false; // F12
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) return false; // Ctrl+Shift+I/J/C
+        if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83 || e.keyCode === 65 || e.keyCode === 67 || e.keyCode === 80)) return false; // Ctrl+U/S/A/C/P
+        if (e.ctrlKey && e.keyCode === 70) return false; // Ctrl+F
+      };
+      const preloader = document.querySelector('#preloader');
+      if (preloader) {
+          window.addEventListener('load', () => {
+              setTimeout(() => {
+                  preloader.classList.add('loaded');
+              }, 500);
+              setTimeout(() => {
+                  preloader.remove();
+              }, 1300);
+          });
+      }
+  </script>
+
+  <header id="header" class="header d-flex align-items-center fixed-top">
+    <div class="container position-relative d-flex align-items-center justify-content-between">
+      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+      </a>
+      <nav id="navmenu" class="navmenu">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html" class="active">About Us</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="pricing.html">Pricing</a></li>
+          <li><a href="index.html#faq">FAQ</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+      </nav>
+      <div class="dropdown">
+        <a class="btn-getstarted dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Client Area
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end">
+          <li><a class="dropdown-item" href="https://portal.nonecloud.top"><span>Client Area</span><small>Billing & Support</small></a></li>
+          <li><a class="dropdown-item" href="https://control.nonecloud.top"><span>Game Panel</span><small>Server Management</small></a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    
+    <section class="page-hero section">
+        <div class="container">
+            <h1 data-aos="fade-up">About NoneCloud</h1>
+            <p data-aos="fade-up" data-aos-delay="100">Powering Your Gameplay with Performance, Reliability, and Simplicity.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="row gy-4 align-items-center">
+          <div class="col-lg-6" data-aos="fade-up">
+            <div class="content">
+              <h3>Our Commitment to Gamers</h3>
+              <p class="fst-italic">
+                NoneCloud is a premium provider of game hosting nodes designed to deliver reliable, high-performance infrastructure for gamers and server owners worldwide.
+              </p>
+              <p>
+                At NoneCloud, we understand the importance of low latency and uptime when it comes to gaming. That’s why all our nodes are built on cutting-edge hardware and connected to high-speed networks, ensuring smooth gameplay and minimal lag. Whether you’re hosting popular games like Minecraft, CS:GO, Rust, or any multiplayer title, NoneCloud provides the foundation you need to offer your players the best experience possible.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="image-wrapper">
+              <img src="https://resources.nonecloud.top/2022-01-12_19.43.37.png" class="img-fluid" alt="High-performance server nodes illustration">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /About Section -->
+
+    <!-- Features Section -->
+    <section id="features-about" class="features section light-background">
+      <div class="container">
+        <div class="section-title text-center">
+          <h2>Why Choose NoneCloud?</h2>
+          <p>We combine powerful technology with a passion for gaming to deliver an unparalleled hosting experience.</p>
+        </div>
+        <div class="row gy-4">
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="feature-box">
+              <i class="bi bi-controller"></i>
+              <h4>Powered by Pterodactyl</h4>
+              <p>Our platform leverages the power of Pterodactyl, a modern and open-source panel. This gives you a secure, intuitive dashboard to create, customize, and control your servers with ease.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="feature-box">
+              <i class="bi bi-shield-shaded"></i>
+              <h4>Advanced Security</h4>
+              <p>Security is a top priority. Our nodes are protected with advanced DDoS mitigation and firewall configurations to keep your servers safe from attacks, and we follow strict privacy standards.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="feature-box">
+              <i class="bi bi-headset"></i>
+              <h4>Passionate Community & Support</h4>
+              <p>NoneCloud is more than just infrastructure — we’re a community of gamers and hosts. Our dedicated support team is available to help you anytime via Discord or our ticket system.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-6 col-md-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="feature-box">
+                <i class="bi bi-lightning-charge-fill"></i>
+              <h4>Simplified Administration</h4>
+              <p>From automated backups to one-click installs and real-time resource monitoring, we simplify server administration so you can focus on your community and gameplay.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section><!-- /Features Section -->
+
+    <!-- FAQ Section -->
+    <section id="faq" class="faq section">
+      <div class="container" data-aos="fade-up" data-aos-delay="100">
+        <div class="section-title text-center">
+            <h2>Frequently Asked Questions</h2>
+            <p>Find answers to common questions about our company and services.</p>
+        </div>
+        <div class="row gy-4 justify-content-center">
+          <div class="col-lg-10">
+            <div class="faq-list">
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                <h3>What is the mission of NoneCloud?</h3>
+                <div class="faq-content">
+                  <p>Our mission is to provide reliable, high-performance, and affordable game server infrastructure for gamers and communities worldwide. We aim to simplify server management so you can focus on what matters most: playing and building your community.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                <h3>What technology powers the control panel?</h3>
+                <div class="faq-content">
+                  <p>We use the powerful and user-friendly Pterodactyl Panel. It's an open-source, modern management panel trusted by thousands, offering a secure and intuitive dashboard for complete control over your game servers.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                <h3>How do you ensure server performance and low latency?</h3>
+                <div class="faq-content">
+                  <p>All our nodes are built on cutting-edge hardware, including high-frequency CPUs and NVMe SSDs. We connect them to premium, high-speed networks to ensure the lowest possible latency and a smooth, lag-free gameplay experience.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+              <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                <h3>Who is the founder of NoneCloud?</h3>
+                <div class="faq-content">
+                  <p>NoneCloud was founded by Muhammad Wafiq, a passionate gamer and hosting expert. His vision is to build a service that offers the quality, performance, and support that he would want as a server owner himself.</p>
+                </div><i class="bi bi-plus faq-toggle"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section><!-- /FAQ Section -->
+
+  </main>
+
+  <!-- FIX: Added 'light-background' class to match index.html footer -->
+  <footer id="footer" class="footer light-background">
+      <div class="footer-top">
+          <div class="container">
+              <div class="row gy-4">
+                  <div class="col-lg-4 col-md-6 footer-about">
+                      <a href="index.html" class="logo d-flex align-items-center">
+                          <img src="assets/img/logo1.png" alt="NoneCloud Malaysia Logo">
+                      </a>
+                      <div class="footer-contact pt-3">
+                          <p>NoneCloud offers high-performance, low-latency game server hosting at nonecloud.top with DDoS protection and a user-friendly Pterodactyl panel.</p>
+                          <p class="mt-3"><strong>Email:</strong> <span>support@nonecloud.top</span></p>
+                      </div>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Quick Links</h4>
+                      <ul>
+                          <li><a href="index.html">Home</a></li>
+                          <li><a href="about.html">About Us</a></li>
+                          <li><a href="index.html#features">Features</a></li>
+                          <li><a href="pricing.html">Pricing</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-2 col-md-3 footer-links">
+                      <h4>Company</h4>
+                      <ul>
+                          <li><a href="ownership.html">Ownership</a></li>
+                          <li><a href="legal.html">Terms of Service</a></li>
+                          <li><a href="legal.html#privacy-policy">Privacy Policy</a></li>
+                          <li><a href="index.html#contact">Contact Us</a></li>
+                      </ul>
+                  </div>
+                  <div class="col-lg-4 col-md-12 footer-social">
+                      <h4>Follow Us</h4>
+                      <p>Join our community and stay up-to-date with the latest news and offers.</p>
+                      <div class="social-links d-flex mt-4">
+                          <a href="https://www.youtube.com/@NoneCloudOfficial"><i class="bi bi-youtube"></i></a>
+                          <a href="https://www.tiktok.com/@nonecloudofficial"><i class="bi bi-tiktok"></i></a>
+                          <a href="https://discord.gg/MnRTdaqTu4" target="_blank"><i class="bi bi-discord"></i></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="copyright text-center">
+          <div class="container d-flex flex-column flex-lg-row justify-content-center justify-content-lg-between align-items-center">
+              <div class="d-flex flex-column align-items-center align-items-lg-start">
+                  <div>
+                      © 2024 - <script>document.write(new Date().getFullYear())</script> <strong><span>NoneCloud.top</span></strong>. All Rights Reserved.
+                  </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="assets/vendor/typed.js/typed.umd.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Main JS File -->
+  <script src="assets/js/main.js"></script>
+
+</body>
+</html>
