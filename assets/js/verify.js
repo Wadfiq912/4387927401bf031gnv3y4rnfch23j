@@ -53,7 +53,7 @@ function showTipsAndFeatures() {
     const tipsHTML = `
         <div class="verifying-loader"></div>
         <p id="tip-text">NoneCloud uses the trusted Pterodactyl Panel for seamless server management.</p>
-        <a href="https://discord.gg/MnRTdaqTu4" target="_blank" class="discord-link">
+        <a href="https://nonecloud.top/discord" target="_blank" class="discord-link">
             <i class="bi bi-discord"></i>
             <span>Join our Community</span>
         </a>`;
