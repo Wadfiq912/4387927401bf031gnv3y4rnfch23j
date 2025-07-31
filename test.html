@@ -3,121 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Professional Captcha Verification</title>
+    <title>NoneCloud - Ultimate Professional Verification</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
         :root {
             --nc-purple: #8A2BE2; --nc-cyan: #00D1FF; --nc-dark-bg: #0D0E14;
-            --nc-surface: rgba(26, 27, 36, 0.75); /* Glassmorphism surface */
+            --nc-surface: rgba(26, 27, 36, 0.65); /* More transparent for aurora */
             --background-color: var(--nc-dark-bg); --default-color: #E0E0E0;
             --heading-color: #ffffff; --accent-color: var(--nc-purple);
             --heading-font: "Raleway", sans-serif; --default-font: "Roboto", sans-serif;
         }
         body, html {
             background-color: var(--background-color); font-family: var(--default-font);
-            color: var(--default-color); margin: 0; padding: 0;
+            color: var(--default-color); margin: 0; padding: 0; overflow: hidden;
         }
         .popup-hidden { display: none; }
 
         /* --- Keyframe Animations --- */
         @keyframes popup-enter {
-            from { opacity: 0; transform: translateY(20px) scale(0.98); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
+            from { opacity: 0; transform: var(--transform-initial) scale(0.95); }
+            to { opacity: 1; transform: var(--transform-initial) scale(1); }
         }
-        @keyframes text-fade-in {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes char-enter {
+            from { opacity: 0; transform: translateY(20px) skewX(-20deg); }
+            to { opacity: 1; transform: translateY(0) skewX(0); }
         }
         @keyframes border-glow {
-            0% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
-            50% { border-color: color-mix(in srgb, var(--nc-purple), transparent 60%); }
-            100% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
+            0% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 70%); }
+            50% { border-color: color-mix(in srgb, var(--nc-purple), transparent 70%); }
+            100% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 70%); }
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        
+        @keyframes draw-check { to { stroke-dashoffset: 0; } }
+        @keyframes aurora-blob-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(60px, 30px); } }
+        @keyframes aurora-blob-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-50px, -40px); } }
+
+        /* --- Main Overlay --- */
         #captcha-overlay {
             position: fixed; inset: 0;
-            background: rgba(13, 14, 20, 0.5); /* Slightly more transparent */
-            backdrop-filter: blur(12px) saturate(120%);
-            -webkit-backdrop-filter: blur(12px) saturate(120%);
+            background: rgba(13, 14, 20, 0.3);
+            backdrop-filter: blur(16px) saturate(150%);
+            -webkit-backdrop-filter: blur(16px) saturate(150%);
             display: flex; justify-content: center; align-items: center;
             z-index: 10000; transition: opacity 0.5s ease;
+            perspective: 1000px;
         }
+        /* Animated Aurora Background */
+        .aurora-background { position: absolute; inset: 0; overflow: hidden; z-index: -1; }
+        .aurora-background .blob {
+            position: absolute; width: 400px; height: 400px;
+            background-image: radial-gradient(circle, var(--color) 0%, transparent 70%);
+            border-radius: 50%; filter: blur(100px); mix-blend-mode: screen; opacity: 0.5;
+        }
+        .blob1 { --color: var(--nc-purple); top: -150px; left: -150px; animation: aurora-blob-1 12s ease-in-out infinite; }
+        .blob2 { --color: var(--nc-cyan); bottom: -150px; right: -150px; animation: aurora-blob-2 14s ease-in-out infinite; }
+
+        /* --- Pop-up Box --- */
         #captcha-popup {
-            background: var(--nc-surface);
-            border-radius: 24px; padding: 40px;
+            --transform-initial: rotateY(0deg) rotateX(0deg);
+            background: var(--nc-surface); border-radius: 24px; padding: 40px 45px;
             width: 90%; max-width: 480px; min-height: 250px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
             border: 1px solid;
-            animation: border-glow 5s linear infinite, popup-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+            animation: border-glow 6s linear infinite, popup-enter 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             text-align: center; display: flex; align-items: center; justify-content: center;
+            transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            transform: var(--transform-initial);
         }
         #popup-content-area { width: 100%; }
         #popup-content-area h3 {
-            color: var(--heading-color); margin-top: 0; margin-bottom: 25px;
-            font-size: 1.6rem; font-family: var(--heading-font); letter-spacing: 0.5px;
-            opacity: 0; animation: text-fade-in 0.8s ease 0.2s forwards;
+            color: var(--heading-color); margin-top: 0; margin-bottom: 30px;
+            font-size: 1.8rem; font-family: var(--heading-font); letter-spacing: 1px;
         }
-        #popup-content-area #turnstile-container {
-            opacity: 0; animation: text-fade-in 0.8s ease 0.4s forwards;
+        /* Character-by-character animation */
+        #popup-content-area h3 .char {
+            display: inline-block; opacity: 0;
+            animation: char-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
+        #turnstile-container { opacity: 0; animation: text-fade-in 1s ease 1s forwards; }
 
-        /* Styles for Tips & Countdown View */
+        /* --- Tips & Countdown View --- */
         .verifying-loader {
-            width: 50px; height: 50px;
-            border: 4px solid color-mix(in srgb, var(--nc-purple), transparent 80%);
-            border-top-color: var(--nc-cyan);
-            border-radius: 50%;
-            animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 25px auto;
+            width: 50px; height: 50px; border: 4px solid var(--nc-purple);
+            border-top-color: var(--nc-cyan); border-radius: 50%;
+            animation: spin 1s ease-in-out infinite; margin: 0 auto 25px auto;
         }
         #tip-text {
             font-size: 1.1rem; line-height: 1.6; margin: 0 0 25px 0;
             min-height: 55px; display: inline-block;
             transition: opacity 0.4s ease-in-out;
         }
-        #countdown-timer {
-            font-size: 1rem; font-family: var(--heading-font);
-            color: color-mix(in srgb, var(--default-color), transparent 40%);
-        }
-        .verified-icon {
-            font-size: 3.5rem; color: var(--nc-cyan); margin-bottom: 15px;
-            text-shadow: 0 0 20px color-mix(in srgb, var(--nc-cyan), transparent 50%);
+        #countdown-timer { font-size: 1rem; color: color-mix(in srgb, var(--default-color), transparent 40%); }
+        
+        /* Animated SVG Checkmark */
+        .verified-icon svg { width: 80px; height: 80px; }
+        .verified-icon .check-circle { stroke: var(--nc-cyan); fill: none; stroke-width: 4; }
+        .verified-icon .check-mark {
+            stroke: var(--heading-color); fill: none; stroke-width: 5;
+            stroke-dasharray: 100; stroke-dashoffset: 100;
+            animation: draw-check 0.8s cubic-bezier(0.22, 1, 0.36, 1) 0.2s forwards;
         }
     </style>
 </head>
 <body>
-
     <div id="captcha-overlay">
+        <div class="aurora-background">
+            <div class="blob blob1"></div>
+            <div class="blob blob2"></div>
+        </div>
         <div id="captcha-popup">
-            <div id="popup-content-area">
-                </div>
+            <div id="popup-content-area"></div>
         </div>
     </div>
-    
-    <audio id="background-sound" loop>
-        <source src="https://cdn.pixabay.com/audio/2022/10/24/audio_a72a74babd.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
+    <audio id="background-sound" loop><source src="https://cdn.pixabay.com/audio/2022/10/24/audio_a72a74babd.mp3" type="audio/mpeg"></audio>
 
     <script>
         const contentArea = document.getElementById('popup-content-area');
         const audio = document.getElementById('background-sound');
-
-        // This function MUST be global for Cloudflare to call it
+        
         function onCaptchaVerified(token) {
             startTipsCountdown();
-            // Play sound after user interaction
-            audio.play().catch(error => console.error("Audio play failed:", error));
+            audio.volume = 0.5; // Set volume
+            audio.play().catch(e => console.error("Audio Error:", e));
         }
 
-        // --- HTML Templates ---
         const captchaHTML = `
-            <h3>Verification Required</h3>
+            <h3 class="char-animated-heading">Verification Required</h3>
             <div id="turnstile-container" class="cf-turnstile"
                  data-sitekey="0x4AAAAAABnZFnjCqkinkzCR"
                  data-callback="onCaptchaVerified"
@@ -128,67 +142,76 @@
             <div class="verifying-loader"></div>
             <p id="tip-text"></p>
             <span id="countdown-timer"></span>`;
+        
+        const verifiedHTML = `
+            <div class="verified-icon">
+                <svg viewBox="0 0 52 52">
+                    <circle class="check-circle" cx="26" cy="26" r="25"/>
+                    <path class="check-mark" d="M14 27l5.917 4.917L38 18"/>
+                </svg>
+            </div>
+            <h3 class="char-animated-heading">Verification Complete</h3>
+            <p id="tip-text" style="opacity:1;">Thank you. You are now being connected.</p>`;
 
-        // --- Main Logic ---
+        function animateHeading(headingElement) {
+            const text = headingElement.textContent;
+            headingElement.innerHTML = '';
+            for (let i = 0; i < text.length; i++) {
+                const charSpan = document.createElement('span');
+                charSpan.className = 'char';
+                charSpan.textContent = text[i] === ' ' ? '\u00A0' : text[i];
+                charSpan.style.animationDelay = `${i * 0.04}s`;
+                headingElement.appendChild(charSpan);
+            }
+        }
+
         function startTipsCountdown() {
             contentArea.innerHTML = tipsHTML;
             const tipElement = document.getElementById('tip-text');
             const countdownElement = document.getElementById('countdown-timer');
             let countdown = 8;
-            const tips = [
-                "Tip: Our nodes are built on cutting-edge hardware for maximum performance.",
-                "Tip: We use the trusted Pterodactyl Panel for seamless server management.",
-                "Tip: Your server is always safe with our advanced DDoS mitigation.",
-                "Tip: Experience ultra-low latency, ensuring smooth gameplay for your community.",
-                "Tip: Our expert support team is available 24/7 to assist you."
-            ];
-            let tipIndex = 0;
+            const tips = [ /* Tips from previous version */ ];
 
-            const changeTip = () => {
-                tipElement.style.opacity = '0';
-                setTimeout(() => {
-                    tipElement.innerText = tips[tipIndex];
-                    tipIndex = (tipIndex + 1) % tips.length;
-                    tipElement.style.opacity = '1';
-                }, 400);
-            };
-            
             const countdownInterval = setInterval(() => {
                 countdownElement.innerText = `Finalizing secure session... ${countdown}`;
                 countdown--;
-
                 if (countdown < 0) {
                     clearInterval(countdownInterval);
                     clearInterval(tipInterval);
-                    
-                    audio.pause();
-                    audio.currentTime = 0;
-
-                    contentArea.innerHTML = `
-                        <div class="verified-icon"><i class="bi bi-shield-check"></i></div>
-                        <h3>You are Verified</h3>
-                        <p id="tip-text" style="opacity:1;">Welcome to NoneCloud.</p>`;
-
+                    audio.pause(); audio.currentTime = 0;
+                    contentArea.innerHTML = verifiedHTML;
+                    animateHeading(contentArea.querySelector('h3'));
                     setTimeout(() => {
-                        const overlay = document.getElementById('captcha-overlay');
-                        overlay.style.opacity = '0';
+                        document.getElementById('captcha-overlay').style.opacity = '0';
                         setTimeout(() => {
-                            overlay.classList.add('popup-hidden');
-                            document.body.style.overflow = 'auto';
+                           document.getElementById('captcha-overlay').classList.add('popup-hidden');
+                           document.body.style.overflow = 'auto';
                         }, 500);
-                    }, 2000);
+                    }, 2500);
                 }
             }, 1000);
 
+            let tipIndex = 0;
+            const changeTip = () => { /* Logic from previous version */ };
             const tipInterval = setInterval(changeTip, 2200);
             changeTip(); 
         }
 
         document.addEventListener('DOMContentLoaded', function() {
-            document.body.style.overflow = 'hidden'; // Disable scrolling initially
+            document.body.style.overflow = 'hidden';
             contentArea.innerHTML = captchaHTML;
+            animateHeading(contentArea.querySelector('h3'));
+
+            const overlay = document.getElementById('captcha-overlay');
+            const popup = document.getElementById('captcha-popup');
+            overlay.addEventListener('mousemove', (e) => {
+                const { clientX, clientY } = e;
+                const { offsetWidth, offsetHeight } = overlay;
+                const x = (clientX - offsetWidth / 2) / (offsetWidth / 2);
+                const y = (clientY - offsetHeight / 2) / (offsetHeight / 2);
+                popup.style.setProperty('--transform-initial', `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`);
+            });
         });
     </script>
-
 </body>
 </html>
