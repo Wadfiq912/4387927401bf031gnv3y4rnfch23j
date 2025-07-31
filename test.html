@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Professional Verification (Final Fix)</title>
+    <title>NoneCloud - Ultimate Professional Verification (Restored)</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
@@ -123,7 +123,6 @@
             audio.play().catch(e => console.error("Audio Error:", e));
         }
 
-        // PEMBETULAN DI SINI: `class="cf-turnstile"` telah dibuang dari <div>
         const captchaHTML = `
             <h3 class="char-animated-heading">Verification Required</h3>
             <div id="turnstile-container"></div>`;
@@ -201,23 +200,28 @@
             changeTip(); 
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        function renderInitialView() {
             document.body.style.overflow = 'hidden';
             contentArea.innerHTML = captchaHTML;
             animateHeading(contentArea.querySelector('h3'));
             
-            // PEMBETULAN DI SINI: Kita kini memanggil `turnstile.render()` secara eksplisit.
-            try {
+            // Logik render CAPTCHA yang stabil
+            if (typeof turnstile !== 'undefined') {
                 turnstile.render('#turnstile-container', {
-                    sitekey: '0x4AAAAAABnZFnjCqkinkzCR', // Guna TEST KEY untuk ujian
+                    sitekey: '0x4AAAAAABnZFnjCqkinkzCR',
                     callback: onCaptchaVerified,
                     theme: 'dark'
                 });
-            } catch (e) {
-                console.error("Turnstile render error:", e);
-                contentArea.innerHTML = "<h3>Error: Could not load CAPTCHA. Please refresh.</h3>";
+            } else {
+                // Cuba lagi jika skrip belum sedia
+                setTimeout(renderInitialView, 500);
             }
+        }
 
+        document.addEventListener('DOMContentLoaded', function() {
+            renderInitialView();
+
+            // Efek 3D Parallax pada tetikus
             const overlay = document.getElementById('captcha-overlay');
             const popup = document.getElementById('captcha-popup');
             overlay.addEventListener('mousemove', (e) => {
