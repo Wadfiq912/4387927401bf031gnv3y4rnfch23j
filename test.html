@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Ultimate Professional Verification (Restored)</title>
+    <title>NoneCloud - Final Stable Verification</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onTurnstileScriptLoad" async defer></script>
 
     <style>
         :root {
@@ -117,7 +118,8 @@
         const contentArea = document.getElementById('popup-content-area');
         const audio = document.getElementById('background-sound');
         
-        function onCaptchaVerified(token) {
+        // Fungsi ini akan dipanggil selepas CAPTCHA disahkan
+        function onCaptchaSuccess(token) {
             startTipsCountdown();
             audio.volume = 0.5;
             audio.play().catch(e => console.error("Audio Error:", e));
@@ -200,28 +202,21 @@
             changeTip(); 
         }
 
-        function renderInitialView() {
+        // Fungsi ini akan dipanggil secara automatik oleh Cloudflare sebaik sahaja skripnya sedia
+        function onTurnstileScriptLoad() {
+            console.log("Cloudflare script is ready. Rendering CAPTCHA now.");
+            
             document.body.style.overflow = 'hidden';
             contentArea.innerHTML = captchaHTML;
             animateHeading(contentArea.querySelector('h3'));
             
-            // Logik render CAPTCHA yang stabil
-            if (typeof turnstile !== 'undefined') {
-                turnstile.render('#turnstile-container', {
-                    sitekey: '0x4AAAAAABnZFnjCqkinkzCR',
-                    callback: onCaptchaVerified,
-                    theme: 'dark'
-                });
-            } else {
-                // Cuba lagi jika skrip belum sedia
-                setTimeout(renderInitialView, 500);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            renderInitialView();
-
-            // Efek 3D Parallax pada tetikus
+            turnstile.render('#turnstile-container', {
+                sitekey: '0x4AAAAAABnZFnjCqkinkzCR', // Guna TEST KEY untuk ujian
+                callback: onCaptchaSuccess,
+                theme: 'dark'
+            });
+            
+            // Logik untuk efek 3D pada tetikus
             const overlay = document.getElementById('captcha-overlay');
             const popup = document.getElementById('captcha-popup');
             overlay.addEventListener('mousemove', (e) => {
@@ -231,7 +226,7 @@
                 const y = (clientY - offsetHeight / 2) / (offsetHeight / 2);
                 popup.style.setProperty('--transform-initial', `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`);
             });
-        });
+        }
     </script>
 </body>
 </html>
