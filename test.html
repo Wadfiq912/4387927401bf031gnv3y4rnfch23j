@@ -3,9 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Google reCAPTCHA v2 Verification</title>
+    <title>NoneCloud - Professional Verification Portal</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://nonecloud.top/assets/css/css-verify.css">
     
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
@@ -14,21 +15,10 @@
     <div id="captcha-overlay">
         <div class="aurora-background">
             <div class="blob blob1"></div>
-            <div class.blob blob2"></div>
+            <div class="blob blob2"></div>
         </div>
         <div id="captcha-popup">
-            <div id="popup-content-area">
-                <h3 class="char-animated-heading">Please Verify</h3>
-                
-                <button 
-                    id="verify-button"
-                    class="g-recaptcha verify-button" 
-                    data-sitekey="6LfjcpUrAAAAADMiYnmhHF2tkXULDMURzJee2jqi" 
-                    data-callback="onRecaptchaSuccess"
-                    data-size="invisible">
-                    Click to Verify
-                </button>
-            </div>
+            <div id="popup-content-area"></div>
         </div>
     </div>
     
