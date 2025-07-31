@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Final Test</title>
+    <title>NoneCloud - Final Fix</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
@@ -16,7 +16,7 @@
             --accent-color: var(--nc-purple); --surface-color: var(--nc-surface);
             --default-font: "Roboto", sans-serif; --heading-font: "Raleway", sans-serif;
         }
-        body { background-color: var(--background-color); font-family: var(--default-font); color: var(--default-color); }
+        body { background-color: var(--background-color); font-family: var(--default-font); }
         .popup-hidden { display: none; }
         #legal-popup-overlay {
             position: fixed; inset: 0; background: rgba(13, 14, 20, 0.7);
@@ -56,63 +56,92 @@
             font-size: 1rem; font-weight: 600; font-family: var(--heading-font);
             cursor: pointer; transition: all 0.3s ease;
         }
-        #decline-button { background-color: transparent; color: var(--default-color); border: 2px solid color-mix(in srgb, var(--default-color), transparent 70%); }
-        #agree-button { background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan)); color: #ffffff; }
         .captcha-view { display: flex; flex-direction: column; justify-content: center; align-items: center; flex-grow: 1; padding: 30px; }
         .captcha-view h3 { font-family: var(--heading-font); color: var(--heading-color); margin-bottom: 25px; font-size: 1.2rem; text-align: center; }
     </style>
 </head>
 <body>
+
     <div id="legal-popup-overlay" class="popup-hidden">
         <div id="legal-popup">
-            <div id="popup-dynamic-area"></div>
-        </div>
-    </div>
-    <script>
-        function onCaptchaVerified(token) {
-            const popupOverlay = document.getElementById('legal-popup-overlay');
-            console.log("SUCCESS: Captcha verified. Setting localStorage.");
-            localStorage.setItem('noneCloudLegalPoliciesAgreed_v2', 'true');
-            popupOverlay.style.opacity = '0';
-            setTimeout(() => { popupOverlay.classList.add('popup-hidden'); }, 300);
-        }
-        document.addEventListener('DOMContentLoaded', function() {
-            const popupOverlay = document.getElementById('legal-popup-overlay');
-            const dynamicArea = document.getElementById('popup-dynamic-area');
-            const legalPromptHTML = `
+            <div id="popup-dynamic-area">
                 <div class="popup-header"><h2>Review Our Legal Policies</h2></div>
                 <div class="popup-content"><p>To continue using our services, please review and agree to the updated NoneCloud <a href="/legal.html" target="_blank">Legal Policies</a>.</p></div>
                 <div class="popup-actions">
                     <button id="decline-button">Decline</button>
                     <button id="agree-button">I Agree</button>
-                </div>`;
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This function MUST be global for Cloudflare to call it
+        function onCaptchaVerified(token) {
+            const popupOverlay = document.getElementById('legal-popup-overlay');
+            console.log("SUCCESS: Captcha verified. Setting localStorage.");
+            localStorage.setItem('noneCloudLegalPoliciesAgreed_v2', 'true');
+            popupOverlay.style.opacity = '0';
+            setTimeout(() => {
+                popupOverlay.classList.add('popup-hidden');
+            }, 300);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const popupOverlay = document.getElementById('legal-popup-overlay');
+            const dynamicArea = document.getElementById('popup-dynamic-area');
+
+            // The HTML for the Captcha view
             const captchaHTML = `
                 <div class="captcha-view">
                     <h3>To complete your agreement, please verify your session.</h3>
-                    <div class="cf-turnstile" data-sitekey="0x4AAAAAABnZFnjCqkinkzCR" data-callback="onCaptchaVerified" data-theme="dark"></div>
+                    <div class="cf-turnstile" 
+                         data-sitekey="1x00000000000000000000AA" 
+                         data-callback="onCaptchaVerified" 
+                         data-theme="dark">
+                    </div>
                 </div>`;
-            function showLegalPrompt() {
-                dynamicArea.innerHTML = legalPromptHTML;
-                document.getElementById('agree-button').addEventListener('click', showCaptcha);
-                document.getElementById('decline-button').addEventListener('click', () => {
-                    alert("You must agree to the Legal Policies to use our services.");
-                });
-            }
+
+            // Function to switch view to Captcha
             function showCaptcha() {
                 dynamicArea.innerHTML = captchaHTML;
                 try {
+                    // This command is crucial to render the widget after it's added to the page
                     turnstile.render('#popup-dynamic-area .cf-turnstile');
-                } catch (e) { console.error("Turnstile render error:", e); }
+                } catch (e) {
+                    console.error("Turnstile render error:", e);
+                }
             }
-            if (localStorage.getItem('noneCloudLegalPoliciesAgreed_v2')) {
-                console.log("Flag found. Hiding pop-up.");
-                popupOverlay.classList.add('popup-hidden');
-            } else {
-                console.log("No flag found. Showing pop-up.");
-                showLegalPrompt();
+
+            // Function to handle the initial logic
+            function initializePopup() {
+                // Check localStorage first
+                if (localStorage.getItem('noneCloudLegalPoliciesAgreed_v2')) {
+                    popupOverlay.classList.add('popup-hidden');
+                    return; // Stop here if already agreed
+                }
+
+                // If not agreed, show the pop-up and attach button listeners
                 popupOverlay.classList.remove('popup-hidden');
+                
+                const agreeButton = document.getElementById('agree-button');
+                const declineButton = document.getElementById('decline-button');
+                
+                if (agreeButton) {
+                    agreeButton.addEventListener('click', showCaptcha);
+                }
+                
+                if (declineButton) {
+                    declineButton.addEventListener('click', () => {
+                        alert("You must agree to the Legal Policies to use our services.");
+                    });
+                }
             }
+
+            // Run the main logic
+            initializePopup();
         });
     </script>
+
 </body>
 </html>
