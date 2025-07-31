@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Google reCAPTCHA v2 Verification</title>
+    <title>NoneCloud - Google reCAPTCHA v2 Verification (Fixed)</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
     
@@ -35,6 +35,10 @@
             0% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
             50% { border-color: color-mix(in srgb, var(--nc-purple), transparent 60%); }
             100% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
+        }
+        @keyframes text-fade-in {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         @keyframes aurora-blob-1 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(60px, 30px); } }
         @keyframes aurora-blob-2 { 0%, 100% { transform: translate(0, 0); } 50% { transform: translate(-50px, -40px); } }
@@ -78,21 +82,16 @@
             animation: char-enter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
         
-        /* Gaya untuk butang pengesahan */
         .verify-button {
             background: linear-gradient(135deg, var(--nc-purple), var(--nc-cyan));
-            color: white;
-            border: none;
-            border-radius: 50px;
-            padding: 15px 35px;
-            font-family: var(--heading-font);
-            font-size: 1.1rem;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            color: white; border: none; border-radius: 50px; padding: 15px 35px;
+            font-family: var(--heading-font); font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease;
             box-shadow: 0 8px 25px color-mix(in srgb, var(--nc-purple), transparent 70%);
             opacity: 0;
-            animation: text-fade-in 1s ease 1s forwards;
+
+            /* PEMBETULAN DI SINI: Delay dikurangkan supaya butang muncul lebih cepat */
+            animation: text-fade-in 0.8s ease 0.5s forwards; 
         }
 
         .verify-button:hover {
@@ -105,7 +104,7 @@
     <div id="captcha-overlay">
         <div class="aurora-background">
             <div class="blob blob1"></div>
-            <div class="blob blob2"></div>
+            <div class.blob blob2"></div>
         </div>
         <div id="captcha-popup">
             <div id="popup-content-area">
@@ -119,24 +118,19 @@
                     data-size="invisible">
                     Click to Verify
                 </button>
-
             </div>
         </div>
     </div>
     
     <script>
-        // Fungsi ini akan dipanggil secara automatik oleh Google selepas pengesahan berjaya.
         function onRecaptchaSuccess(token) {
             console.log("reCAPTCHA Verified! Token:", token);
             const overlay = document.getElementById('captcha-overlay');
-            const popup = document.getElementById('captcha-popup');
             const content = document.getElementById('popup-content-area');
             
-            // Tukar kandungan kepada mesej kejayaan
             content.innerHTML = `<h3 class="char-animated-heading">Verification Complete</h3>`;
             animateHeading(content.querySelector('h3'));
 
-            // Sembunyikan pop timbul selepas 2 saat
             setTimeout(() => {
                 overlay.style.opacity = '0';
                 setTimeout(() => {
@@ -163,7 +157,6 @@
             document.body.style.overflow = 'hidden';
             animateHeading(document.querySelector('.char-animated-heading'));
 
-            // Efek 3D Parallax pada tetikus
             const overlay = document.getElementById('captcha-overlay');
             const popup = document.getElementById('captcha-popup');
             overlay.addEventListener('mousemove', (e) => {
