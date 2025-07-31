@@ -3,86 +3,90 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Captcha with Tips Countdown</title>
+    <title>NoneCloud - Professional Captcha Verification</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 
     <style>
         :root {
             --nc-purple: #8A2BE2; --nc-cyan: #00D1FF; --nc-dark-bg: #0D0E14;
-            --nc-surface: #1A1B24; --background-color: var(--nc-dark-bg);
-            --default-color: #E0E0E0; --heading-color: #ffffff;
+            --nc-surface: rgba(26, 27, 36, 0.75); /* Glassmorphism surface */
+            --background-color: var(--nc-dark-bg); --default-color: #E0E0E0;
+            --heading-color: #ffffff; --accent-color: var(--nc-purple);
             --heading-font: "Raleway", sans-serif; --default-font: "Roboto", sans-serif;
         }
         body, html {
             background-color: var(--background-color); font-family: var(--default-font);
             color: var(--default-color); margin: 0; padding: 0;
-            overflow: hidden;
         }
         .popup-hidden { display: none; }
 
+        /* --- Keyframe Animations --- */
         @keyframes popup-enter {
-            from { opacity: 0; transform: translateY(30px) scale(0.95); }
+            from { opacity: 0; transform: translateY(20px) scale(0.98); }
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
-        @keyframes text-fade-in-up {
-            from { opacity: 0; transform: translateY(20px); }
+        @keyframes text-fade-in {
+            from { opacity: 0; transform: translateY(15px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes border-glow {
-            0% { border-color: color-mix(in srgb, var(--nc-purple), transparent 50%); }
-            50% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 50%); }
-            100% { border-color: color-mix(in srgb, var(--nc-purple), transparent 50%); }
+            0% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
+            50% { border-color: color-mix(in srgb, var(--nc-purple), transparent 60%); }
+            100% { border-color: color-mix(in srgb, var(--nc-cyan), transparent 60%); }
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        .fade-out { opacity: 0; }
-        .fade-in { opacity: 1; }
-
         #captcha-overlay {
-            position: fixed; inset: 0; background: rgba(13, 14, 20, 0.85);
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+            position: fixed; inset: 0;
+            background: rgba(13, 14, 20, 0.5); /* Slightly more transparent */
+            backdrop-filter: blur(12px) saturate(120%);
+            -webkit-backdrop-filter: blur(12px) saturate(120%);
             display: flex; justify-content: center; align-items: center;
-            z-index: 10000; transition: opacity 0.4s ease-in-out;
+            z-index: 10000; transition: opacity 0.5s ease;
         }
         #captcha-popup {
-            background: var(--nc-surface); border-radius: 20px; padding: 40px;
+            background: var(--nc-surface);
+            border-radius: 24px; padding: 40px;
             width: 90%; max-width: 480px; min-height: 250px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3); border: 2px solid;
-            animation: border-glow 4s linear infinite, popup-enter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            border: 1px solid;
+            animation: border-glow 5s linear infinite, popup-enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
             text-align: center; display: flex; align-items: center; justify-content: center;
         }
         #popup-content-area { width: 100%; }
         #popup-content-area h3 {
             color: var(--heading-color); margin-top: 0; margin-bottom: 25px;
-            font-size: 1.5rem; font-family: var(--heading-font);
-            opacity: 0; animation: text-fade-in-up 0.7s ease 0.3s forwards;
+            font-size: 1.6rem; font-family: var(--heading-font); letter-spacing: 0.5px;
+            opacity: 0; animation: text-fade-in 0.8s ease 0.2s forwards;
         }
         #popup-content-area #turnstile-container {
-            opacity: 0; animation: text-fade-in-up 0.7s ease 0.5s forwards;
+            opacity: 0; animation: text-fade-in 0.8s ease 0.4s forwards;
         }
 
         /* Styles for Tips & Countdown View */
-        .loader {
+        .verifying-loader {
             width: 50px; height: 50px;
-            border: 4px solid color-mix(in srgb, var(--nc-cyan), transparent 80%);
+            border: 4px solid color-mix(in srgb, var(--nc-purple), transparent 80%);
             border-top-color: var(--nc-cyan);
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 1s ease-in-out infinite;
             margin: 0 auto 25px auto;
         }
         #tip-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin: 0 0 25px 0;
-            min-height: 50px; /* Prevent layout shift */
-            transition: opacity 0.5s ease-in-out;
+            font-size: 1.1rem; line-height: 1.6; margin: 0 0 25px 0;
+            min-height: 55px; display: inline-block;
+            transition: opacity 0.4s ease-in-out;
         }
         #countdown-timer {
-            font-size: 1rem;
-            font-family: var(--heading-font);
-            color: color-mix(in srgb, var(--default-color), transparent 30%);
+            font-size: 1rem; font-family: var(--heading-font);
+            color: color-mix(in srgb, var(--default-color), transparent 40%);
+        }
+        .verified-icon {
+            font-size: 3.5rem; color: var(--nc-cyan); margin-bottom: 15px;
+            text-shadow: 0 0 20px color-mix(in srgb, var(--nc-cyan), transparent 50%);
         }
     </style>
 </head>
@@ -94,15 +98,22 @@
                 </div>
         </div>
     </div>
+    
+    <audio id="background-sound" loop>
+        <source src="https://cdn.pixabay.com/audio/2022/10/24/audio_a72a74babd.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
     <script>
+        const contentArea = document.getElementById('popup-content-area');
+        const audio = document.getElementById('background-sound');
+
         // This function MUST be global for Cloudflare to call it
         function onCaptchaVerified(token) {
-            console.log("Captcha Verified! Starting tips countdown.");
             startTipsCountdown();
+            // Play sound after user interaction
+            audio.play().catch(error => console.error("Audio play failed:", error));
         }
-
-        const contentArea = document.getElementById('popup-content-area');
 
         // --- HTML Templates ---
         const captchaHTML = `
@@ -114,77 +125,69 @@
             </div>`;
         
         const tipsHTML = `
-            <div class="loader"></div>
-            <p id="tip-text">Finalizing your secure session...</p>
+            <div class="verifying-loader"></div>
+            <p id="tip-text"></p>
             <span id="countdown-timer"></span>`;
 
         // --- Main Logic ---
         function startTipsCountdown() {
             contentArea.innerHTML = tipsHTML;
-            
             const tipElement = document.getElementById('tip-text');
             const countdownElement = document.getElementById('countdown-timer');
             let countdown = 8;
-
             const tips = [
+                "Tip: Our nodes are built on cutting-edge hardware for maximum performance.",
                 "Tip: We use the trusted Pterodactyl Panel for seamless server management.",
-                "Tip: Our network is optimized for ultra-low latency, ensuring smooth gameplay.",
-                "Tip: Your server is always safe with our enterprise-grade DDoS protection.",
-                "Tip: Experience peak performance with our cutting-edge hardware.",
-                "Tip: Need help? Our expert support team is available 24/7 via Discord."
+                "Tip: Your server is always safe with our advanced DDoS mitigation.",
+                "Tip: Experience ultra-low latency, ensuring smooth gameplay for your community.",
+                "Tip: Our expert support team is available 24/7 to assist you."
             ];
             let tipIndex = 0;
 
-            // Function to change tips smoothly
             const changeTip = () => {
-                tipElement.classList.add('fade-out'); // Fade out
+                tipElement.style.opacity = '0';
                 setTimeout(() => {
                     tipElement.innerText = tips[tipIndex];
-                    tipIndex = (tipIndex + 1) % tips.length; // Loop through tips
-                    tipElement.classList.remove('fade-out'); // Fade in
-                }, 500); // Wait for fade out to complete
+                    tipIndex = (tipIndex + 1) % tips.length;
+                    tipElement.style.opacity = '1';
+                }, 400);
             };
             
-            // Start the countdown timer
             const countdownInterval = setInterval(() => {
-                countdownElement.innerText = `Please wait... ${countdown}`;
+                countdownElement.innerText = `Finalizing secure session... ${countdown}`;
                 countdown--;
 
                 if (countdown < 0) {
                     clearInterval(countdownInterval);
                     clearInterval(tipInterval);
+                    
+                    audio.pause();
+                    audio.currentTime = 0;
 
-                    tipElement.classList.add('fade-out');
+                    contentArea.innerHTML = `
+                        <div class="verified-icon"><i class="bi bi-shield-check"></i></div>
+                        <h3>You are Verified</h3>
+                        <p id="tip-text" style="opacity:1;">Welcome to NoneCloud.</p>`;
+
                     setTimeout(() => {
-                        contentArea.querySelector('.loader').style.display = 'none';
-                        tipElement.innerHTML = `<h3>Thank you!</h3>You are verified as human.`;
-                        countdownElement.innerText = '';
-                        tipElement.classList.remove('fade-out');
-
-                        // Hide the entire pop-up after a final delay
+                        const overlay = document.getElementById('captcha-overlay');
+                        overlay.style.opacity = '0';
                         setTimeout(() => {
-                            const overlay = document.getElementById('captcha-overlay');
-                            overlay.style.opacity = '0';
-                            setTimeout(() => {
-                                overlay.classList.add('popup-hidden');
-                                document.body.style.overflow = 'auto'; // Re-enable scrolling
-                            }, 400);
-                        }, 2000); // Show "Thank you" for 2 seconds
-                    }, 500);
+                            overlay.classList.add('popup-hidden');
+                            document.body.style.overflow = 'auto';
+                        }, 500);
+                    }, 2000);
                 }
             }, 1000);
 
-            // Start the tip cycler
-            const tipInterval = setInterval(changeTip, 2000);
-            changeTip(); // Show the first tip immediately
+            const tipInterval = setInterval(changeTip, 2200);
+            changeTip(); 
         }
 
-        // --- Initial Load Logic ---
         document.addEventListener('DOMContentLoaded', function() {
-            // Load the initial captcha view
+            document.body.style.overflow = 'hidden'; // Disable scrolling initially
             contentArea.innerHTML = captchaHTML;
         });
-
     </script>
 
 </body>
