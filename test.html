@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Professional Loading Screen</title>
+    <title>NoneCloud - Advanced Loading Screen</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://nonecloud.top/assets/css/css-verify.css">
@@ -17,16 +17,17 @@
         </div>
         
         <div class="loading-content">
-            <div class="logo-animation">
-                <svg class="logo-svg" viewBox="0 0 100 100">
-                    <circle class="logo-bg" cx="50" cy="50" r="45"/>
-                    <text x="50%" y="50%" dy=".3em" text-anchor="middle">NC</text>
+            <div class="scanner-animation">
+                <div class="ring ring1"></div>
+                <div class="ring ring2"></div>
+                <div class="ring ring3"></div>
+                <div class="logo-text">NC</div>
+                <svg class="progress-ring" width="160" height="160">
+                    <circle class="progress-ring-track" cx="80" cy="80" r="75"></circle>
+                    <circle id="progress-ring-fill" class="progress-ring-fill" cx="80" cy="80" r="75"></circle>
                 </svg>
             </div>
-            <p id="tip-text">Preparing your seamless experience...</p>
-            <div class="progress-bar-container">
-                <div id="progress-bar-fill"></div>
-            </div>
+            <p id="tip-text"></p>
         </div>
     </div>
 
