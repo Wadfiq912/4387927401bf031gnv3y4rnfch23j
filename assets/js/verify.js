@@ -1,122 +1,47 @@
-// Fungsi ini dipanggil oleh Google selepas reCAPTCHA berjaya
-function onRecaptchaSuccess(token) {
-    console.log("reCAPTCHA Verified! Token:", token);
+document.addEventListener('DOMContentLoaded', function() {
+    const overlay = document.getElementById('loading-overlay');
+    const mainContent = document.getElementById('main-content');
+    const tipElement = document.getElementById('tip-text');
+    const progressBarFill = document.getElementById('progress-bar-fill');
     
-    // Hentikan sebarang timer yang mungkin masih berjalan
-    clearInterval(window.tipInterval);
-
-    const content = document.getElementById('popup-content-area');
-    const overlay = document.getElementById('captcha-overlay');
-    
-    // Templat HTML untuk mesej kejayaan
-    const verifiedHTML = `
-        <div class="verified-icon">
-            <svg viewBox="0 0 52 52">
-                <circle class="check-circle" cx="26" cy="26" r="25"/>
-                <path class="check-mark" d="M14 27l5.917 4.917L38 18"/>
-            </svg>
-        </div>
-        <h3 class="char-animated-heading">Verification Complete</h3>`;
-    
-    content.innerHTML = verifiedHTML;
-    animateHeading(content.querySelector('h3'));
-
-    // Sembunyikan pop timbul selepas 2 saat
-    setTimeout(() => {
-        overlay.style.opacity = '0';
-        setTimeout(() => {
-            overlay.classList.add('popup-hidden');
-            document.body.style.overflow = 'auto'; // Aktifkan semula skrol
-        }, 500);
-    }, 2000);
-}
-
-// Fungsi untuk menganimasikan teks tajuk
-function animateHeading(headingElement) {
-    if (!headingElement) return;
-    const text = headingElement.textContent;
-    headingElement.innerHTML = '';
-    for (let i = 0; i < text.length; i++) {
-        const charSpan = document.createElement('span');
-        charSpan.className = 'char';
-        charSpan.textContent = text[i] === ' ' ? '\u00A0' : text[i];
-        charSpan.style.animationDelay = `${i * 0.04}s`;
-        headingElement.appendChild(charSpan);
-    }
-}
-
-// Fungsi untuk memulakan paparan Tips & Features
-function showTipsAndFeatures() {
-    const content = document.getElementById('popup-content-area');
-    
-    // Templat HTML untuk paparan menunggu
-    const tipsHTML = `
-        <div class="verifying-loader"></div>
-        <p id="tip-text">NoneCloud uses the trusted Pterodactyl Panel for seamless server management.</p>
-        <a href="https://nonecloud.top/discord" target="_blank" class="discord-link">
-            <i class="bi bi-discord"></i>
-            <span>Join our Community</span>
-        </a>`;
-    
-    content.innerHTML = tipsHTML;
-
     // Senarai Tips & Ciri-ciri
     const tips = [
-        "Feature: All servers are protected with enterprise-grade DDoS mitigation.",
-        "Tip: Our network is optimized for ultra-low latency, ensuring smooth gameplay.",
-        "Feature: Manage your server easily with our intuitive Pterodactyl Panel.",
-        "Tip: Experience peak performance with our cutting-edge hardware.",
-        "Feature: Get help anytime from our 24/7 expert support team."
+        "Powered by the trusted Pterodactyl Panel for seamless server management.",
+        "Built on cutting-edge hardware for maximum performance.",
+        "Protected with advanced DDoS mitigation to keep your servers safe.",
+        "Optimized for ultra-low latency, ensuring smooth gameplay.",
+        "Our dedicated support team is available 24/7 to help you."
     ];
     let tipIndex = 0;
-    const tipElement = document.getElementById('tip-text');
 
-    // Mula menukar tips setiap 3.5 saat
-    window.tipInterval = setInterval(() => {
-        tipElement.style.opacity = '0';
+    // Fungsi untuk menukar tips
+    function changeTip() {
+        tipElement.style.opacity = '0'; // Pudar keluar
         setTimeout(() => {
-            tipIndex = (tipIndex + 1) % tips.length;
+            tipIndex = (tipIndex + 1) % tips.length; // Pergi ke tip seterusnya
             tipElement.innerText = tips[tipIndex];
-            tipElement.style.opacity = '1';
-        }, 500);
-    }, 3500);
-}
+            tipElement.style.opacity = '1'; // Pudar masuk
+        }, 500); // Tunggu 0.5s sebelum tukar teks
+    }
 
-// Logik utama yang berjalan apabila halaman dimuatkan
-document.addEventListener('DOMContentLoaded', function() {
-    const content = document.getElementById('popup-content-area');
-    
-    // Templat HTML untuk paparan awal
-    const initialHTML = `
-        <h3 class="char-animated-heading">Please Verify Your Session</h3>
-        <button 
-            id="verify-button"
-            class="g-recaptcha verify-button" 
-            data-sitekey="6LfjcpUrAAAAADMiYnmhHF2tkXULDMURzJee2jqi" 
-            data-callback="onRecaptchaSuccess"
-            data-size="invisible">
-            Click to Verify
-        </button>`;
+    // Mulakan penukaran tips setiap 2.5 saat
+    const tipInterval = setInterval(changeTip, 2500);
 
-    // Paparkan kandungan awal
-    content.innerHTML = initialHTML;
-    document.body.style.overflow = 'hidden';
-    animateHeading(content.querySelector('h3'));
+    // Mulakan animasi bar kemajuan sejurus selepas halaman dimuatkan
+    setTimeout(() => {
+        progressBarFill.style.width = '100%';
+    }, 100);
 
-    // Tambah event listener pada butang pengesahan
-    document.getElementById('verify-button').addEventListener('click', () => {
-        // Tukar ke paparan "menunggu" sebaik sahaja butang ditekan
-        setTimeout(showTipsAndFeatures, 100); 
-    });
+    // Selepas 8 saat, sembunyikan skrin pemuatan
+    setTimeout(() => {
+        clearInterval(tipInterval); // Berhentikan penukaran tips
+        overlay.classList.add('fade-out'); // Tambah kelas untuk efek pudar keluar
+        mainContent.classList.remove('hidden'); // Tunjukkan kandungan utama laman web
+        
+        // Buang overlay dari DOM selepas animasi selesai untuk prestasi lebih baik
+        setTimeout(() => {
+            overlay.remove();
+        }, 800); // Masa mesti sepadan dengan 'transition' dalam CSS
 
-    // Efek 3D Parallax pada tetikus
-    const overlay = document.getElementById('captcha-overlay');
-    const popup = document.getElementById('captcha-popup');
-    overlay.addEventListener('mousemove', (e) => {
-        const { clientX, clientY } = e;
-        const { offsetWidth, offsetHeight } = overlay;
-        const x = (clientX - offsetWidth / 2) / (offsetWidth / 2);
-        const y = (clientY - offsetHeight / 2) / (offsetHeight / 2);
-        popup.style.setProperty('--transform-initial', `rotateY(${x * 8}deg) rotateX(${-y * 8}deg)`);
-    });
+    }, 8000); // 8000 milisaat = 8 saat
 });
