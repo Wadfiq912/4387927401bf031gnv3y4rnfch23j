@@ -3,25 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NoneCloud - Professional Verification Portal</title>
+    <title>NoneCloud - Professional Loading Screen</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Raleway:wght@700&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="https://nonecloud.top/assets/css/css-verify.css">
-    
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
-    <div id="captcha-overlay">
+
+    <div id="loading-overlay">
         <div class="aurora-background">
             <div class="blob blob1"></div>
             <div class="blob blob2"></div>
         </div>
-        <div id="captcha-popup">
-            <div id="popup-content-area"></div>
+        
+        <div class="loading-content">
+            <div class="logo-animation">
+                <svg class="logo-svg" viewBox="0 0 100 100">
+                    <circle class="logo-bg" cx="50" cy="50" r="45"/>
+                    <text x="50%" y="50%" dy=".3em" text-anchor="middle">NC</text>
+                </svg>
+            </div>
+            <p id="tip-text">Preparing your seamless experience...</p>
+            <div class="progress-bar-container">
+                <div id="progress-bar-fill"></div>
+            </div>
         </div>
     </div>
-    
+
+    <div id="main-content" class="hidden">
+        <h1 style="color: white; text-align: center; padding: 50px;">Welcome to NoneCloud</h1>
+        <p style="color: white; text-align: center;">The website is now ready.</p>
+    </div>
+
     <script src="https://nonecloud.top/assets/js/verify.js"></script>
 </body>
 </html>
